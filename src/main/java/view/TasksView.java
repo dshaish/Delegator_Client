@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableColumn;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -32,6 +33,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerNumberModel;
+
+import org.delegator.wsclient.NubemetTask;
 
 import com.sun.awt.AWTUtilities;
 
@@ -64,9 +67,13 @@ public class TasksView {
 	private JTable table;
 	private JButton loginButton;
 	private JTextField userText;
+	private JPanel cards;
 	private JPasswordField passwordText;
 	private List<JCheckBox> descendants;
 	private TasksController tControl;
+	private JTextField title;
+	private JTextArea description;
+	private JFormattedTextField dueDate;
 	
 	public TasksView(TasksController controller){
 		tControl = controller;
@@ -109,13 +116,20 @@ public class TasksView {
 		if (mainFrame == null) {
 			mainFrame = new JFrame("NuBemet Tasks");
 			mainFrame.setLayout(null);
+			cards = new JPanel(new CardLayout());
 			//mainFrame.setBounds(new Rectangle(270, 250, FRAME_WIDTH, FRAME_HIGHT));
 			mainFrame.setMinimumSize(new Dimension(FRAME_WIDTH, FRAME_HIGHT));
 			mainFrame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HIGHT));
 			//mainFrame.setSize(new Dimension(780, 550));
-			//mainFrame.setResizable(false);
+			mainFrame.setResizable(false);
+			cards.add(getTasksPanel(),"TasksList");
+			cards.add(getLoginPanel(),"Login");
+			cards.add(getAddTaskPane(),"AddTask");
+			mainFrame.setContentPane(cards);
+			CardLayout cl = (CardLayout)(cards.getLayout());
+		    cl.show(cards, "Login");
 			//mainFrame.setContentPane(getTasksPanel());
-			mainFrame.setContentPane(getLoginPanel());
+			//mainFrame.setContentPane(getLoginPanel());
 			//mainFrame.setContentPane(getAddTaskPane());
 			//mainFrame.add(getButtonsPanel(), BorderLayout.PAGE_END);
 			//mainFrame.add(getOfficePanel(), null);
@@ -133,20 +147,20 @@ public class TasksView {
 			descriptionLabel.setBounds(new Rectangle(10, 52, 100, 27));
 			descriptionLabel.setText("Description:");
 			
-			JTextField titleText = new JTextField();
-			titleText.setBounds(new Rectangle(85, 20, 185, 23));
+			title = new JTextField();
+			title.setBounds(new Rectangle(85, 20, 185, 23));
 			
-			JTextArea descText = new JTextArea(5, 10);
-			descText.setBounds(new Rectangle(85, 57, 185, 120));
-			JScrollPane scrollPane = new JScrollPane(descText); 
+			description = new JTextArea(5, 10);
+			description.setBounds(new Rectangle(85, 57, 185, 120));
+			JScrollPane scrollPane = new JScrollPane(description); 
 			scrollPane.setBounds(new Rectangle(85, 57, 185, 120));
-			descText.setEditable(true);
+			description.setEditable(true);
 			
 			JLabel dueLabel = new JLabel();
 			dueLabel.setBounds(new Rectangle(10, 182, 100, 27));
 			dueLabel.setText("Due Date:");
 			
-			JFormattedTextField dueDate = new JFormattedTextField(new SimpleDateFormat("dd-MM-yyyy"));
+			dueDate = new JFormattedTextField(new SimpleDateFormat("dd-MM-yyyy"));
 			dueDate.setBounds(new Rectangle(85, 190, 70, 23));
 			
 			JLabel delegateLabel = new JLabel();
@@ -176,7 +190,7 @@ public class TasksView {
 			addDescendants(addTaskPanel,100,235);
 			
 			addTaskPanel.add(titleLabel, null);
-			addTaskPanel.add(titleText, null);
+			addTaskPanel.add(title, null);
 			addTaskPanel.add(descriptionLabel, null);
 			addTaskPanel.add(scrollPane, null);
 			addTaskPanel.add(dueLabel, null);
@@ -203,6 +217,7 @@ public class TasksView {
 //			j = new JCheckBox(desc.get(i).getName());
 			j = new JCheckBox(desc.get(i));
 			j.setBounds(new Rectangle(x, y+(i*20), 400, 23));
+			//j.addItemListener(tControl.get_descendantsListener(j));
 			scrollPane.add(j);
 			descendants.add(j);
 			panel.add(j);
@@ -212,7 +227,7 @@ public class TasksView {
 
 	private List getListOfDesc() {
 		List<String> l = new ArrayList<String>();
-		
+		//List<String> l = tControl.getWorksForNames();
 		l.add("Shimon Mizrahi");
 		l.add("Barak Obama");
 		l.add("Puyol");
@@ -234,8 +249,8 @@ public class TasksView {
 			deleteTask.setActionCommand("deleteTask");
 			deleteTask.addActionListener(tControl.get_taskListListener());
 			
-			JButton exit = new JButton("Exit");
-			exit.setActionCommand("exit");
+			JButton exit = new JButton("Logout");
+			exit.setActionCommand("logout");
 			exit.addActionListener(tControl.get_taskListListener());
 			
 			buttons.add(newTask);
@@ -251,6 +266,8 @@ public class TasksView {
 	private JScrollPane getTablePanel(){
 		String[] columnNames = {"","",
 		""};
+		
+		//Object[][] data = tControl._getTasksList();
 		Object[][] data = {
 				{1,"First Day at work", "01/08/2010"},
 				{2,"Submission of the project", "15/08/2010"},
@@ -322,6 +339,13 @@ public class TasksView {
 			loginPanel.add(passwordLabel, null);
 			loginPanel.add(getPasswordText(), null);
 			loginPanel.add(getLoginButton(), null);
+			
+			JButton exit = new JButton();
+			exit.setBounds(new Rectangle(100, 120, 80, 23));
+			exit.setText("Exit");
+			exit.setActionCommand("Exit");
+			exit.addActionListener(tControl.get_loginListener());
+			loginPanel.add(exit);
 		}
 		return loginPanel;
 	}
@@ -377,5 +401,37 @@ public class TasksView {
 		}
 		return passwordText;
 	}
+
+	public void goToTasks() {
+		CardLayout cl = (CardLayout)(cards.getLayout());
+	    cl.show(cards, "TasksList");
+	}
+	
+	public void goToAddTask(){
+		CardLayout cl = (CardLayout)(cards.getLayout());
+	    cl.show(cards, "AddTask");
+	}
+	
+	public void goToLogin(){
+		CardLayout cl = (CardLayout)(cards.getLayout());
+	    cl.show(cards, "Login");
+	}
+
+	public int getSelectedTaskId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void reloadTasksList() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public NubemetTask getNewNubemetTask() {
+		NubemetTask task = new NubemetTask();
+		
+		return task;
+	}
+
 
 }
