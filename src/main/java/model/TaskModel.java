@@ -1,12 +1,11 @@
 package model;
 
-import java.util.HashMap;
 import java.util.List;
 
+import org.delegator.wsclient.Employee;
 import org.delegator.wsclient.NubemetTask;
 import org.delegator.wsclient.NubemetWebService;
 import org.delegator.wsclient.UserTasksFilter;
-
 import container.SpringContextContainer;
 
 
@@ -78,9 +77,8 @@ public class TaskModel {
 		}
 		return data;
 	}
-	public List<String> getWorksForNames() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Employee> getWorksForNames() {
+		return client.getWorksForMe(eid);
 	}
 	
 	//public String[][] getWorksForMe(){

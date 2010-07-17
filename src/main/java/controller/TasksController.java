@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.swing.JCheckBox;
 
+import org.delegator.wsclient.Employee;
+
 import model.TaskModel;
 
 import view.TasksView;
@@ -111,7 +113,7 @@ public class TasksController {
 	public Object[][] _getTasksList() {
 		return _model.getTasksList();
 	}
-	public List<String> getWorksForNames(){
+	public List<Employee> getWorksForNames(){
 		return _model.getWorksForNames();
 		
 	}
