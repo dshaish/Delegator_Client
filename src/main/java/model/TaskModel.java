@@ -31,11 +31,10 @@ public class TaskModel {
 		return false;
 	}
 	public boolean addTask(NubemetTask task){
-//		if(client.addTask(task)){
-//			System.out.println("Task Added succesfully");
-//			return true;
-//		}
-//		System.err.println("Error Deleting Task");
+		if(client.addTask(task,eid)){
+			System.out.println("Task Added succesfully");
+			return true;
+		}
 		return false;	
 	}
 	public boolean login(String username, String password){
@@ -77,7 +76,6 @@ public class TaskModel {
 				data[i][2] = "NONE";
 			}
 		}
-		
 		return data;
 	}
 	public List<String> getWorksForNames() {

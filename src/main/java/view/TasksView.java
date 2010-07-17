@@ -51,6 +51,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -426,6 +427,8 @@ public class TasksView {
 
 	public NubemetTask getNewNubemetTask() {
 		NubemetTask task = new NubemetTask();
+		task.setTitle(" Title ");
+		task.setDescription("A TASK");
 		return task;
 	}
 
