@@ -45,35 +45,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetTasksResponse }
-     * 
-     */
-    public GetTasksResponse createGetTasksResponse() {
-        return new GetTasksResponse();
-    }
-
-    /**
-     * Create an instance of {@link RemoveTask }
-     * 
-     */
-    public RemoveTask createRemoveTask() {
-        return new RemoveTask();
-    }
-
-    /**
      * Create an instance of {@link GetTasks }
      * 
      */
     public GetTasks createGetTasks() {
         return new GetTasks();
-    }
-
-    /**
-     * Create an instance of {@link OnTime }
-     * 
-     */
-    public OnTime createOnTime() {
-        return new OnTime();
     }
 
     /**
@@ -85,27 +61,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DelegateTaskResponse }
+     * Create an instance of {@link HashMap }
      * 
      */
-    public DelegateTaskResponse createDelegateTaskResponse() {
-        return new DelegateTaskResponse();
+    public HashMap createHashMap() {
+        return new HashMap();
     }
 
     /**
-     * Create an instance of {@link Tasks }
+     * Create an instance of {@link GetTasksResponse }
      * 
      */
-    public Tasks createTasks() {
-        return new Tasks();
-    }
-
-    /**
-     * Create an instance of {@link Updates }
-     * 
-     */
-    public Updates createUpdates() {
-        return new Updates();
+    public GetTasksResponse createGetTasksResponse() {
+        return new GetTasksResponse();
     }
 
     /**
@@ -117,35 +85,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddTaskResponse }
+     * Create an instance of {@link AddTask }
      * 
      */
-    public AddTaskResponse createAddTaskResponse() {
-        return new AddTaskResponse();
-    }
-
-    /**
-     * Create an instance of {@link Employee }
-     * 
-     */
-    public Employee createEmployee() {
-        return new Employee();
-    }
-
-    /**
-     * Create an instance of {@link AuthenticateResponse }
-     * 
-     */
-    public AuthenticateResponse createAuthenticateResponse() {
-        return new AuthenticateResponse();
-    }
-
-    /**
-     * Create an instance of {@link HashMap }
-     * 
-     */
-    public HashMap createHashMap() {
-        return new HashMap();
+    public AddTask createAddTask() {
+        return new AddTask();
     }
 
     /**
@@ -157,27 +101,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Late }
-     * 
-     */
-    public Late createLate() {
-        return new Late();
-    }
-
-    /**
-     * Create an instance of {@link Authenticate }
-     * 
-     */
-    public Authenticate createAuthenticate() {
-        return new Authenticate();
-    }
-
-    /**
      * Create an instance of {@link GetWorksForMe }
      * 
      */
     public GetWorksForMe createGetWorksForMe() {
         return new GetWorksForMe();
+    }
+
+    /**
+     * Create an instance of {@link DelegateTaskResponse }
+     * 
+     */
+    public DelegateTaskResponse createDelegateTaskResponse() {
+        return new DelegateTaskResponse();
     }
 
     /**
@@ -189,19 +125,35 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link TasksC }
+     * Create an instance of {@link AuthenticateResponse }
      * 
      */
-    public TasksC createTasksC() {
-        return new TasksC();
+    public AuthenticateResponse createAuthenticateResponse() {
+        return new AuthenticateResponse();
     }
 
     /**
-     * Create an instance of {@link AddTask }
+     * Create an instance of {@link AddTaskResponse }
      * 
      */
-    public AddTask createAddTask() {
-        return new AddTask();
+    public AddTaskResponse createAddTaskResponse() {
+        return new AddTaskResponse();
+    }
+
+    /**
+     * Create an instance of {@link Authenticate }
+     * 
+     */
+    public Authenticate createAuthenticate() {
+        return new Authenticate();
+    }
+
+    /**
+     * Create an instance of {@link RemoveTask }
+     * 
+     */
+    public RemoveTask createRemoveTask() {
+        return new RemoveTask();
     }
 
     /**

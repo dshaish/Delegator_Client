@@ -122,7 +122,7 @@ public class TasksView {
 			mainFrame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HIGHT));
 			//mainFrame.setSize(new Dimension(780, 550));
 			mainFrame.setResizable(false);
-			cards.add(getTasksPanel(),"TasksList");
+			
 			cards.add(getLoginPanel(),"Login");
 			cards.add(getAddTaskPane(),"AddTask");
 			mainFrame.setContentPane(cards);
@@ -267,7 +267,6 @@ public class TasksView {
 		String[] columnNames = {"","",
 		""};
 		
-		//Object[][] data = tControl._getTasksList();
 		Object[][] data = {
 				{1,"First Day at work", "01/08/2010"},
 				{2,"Submission of the project", "15/08/2010"},
@@ -275,6 +274,9 @@ public class TasksView {
 				{4,"First day at school", "01/09/2010"},
 				{5,"saddsf sdlkfh aksd ", "02/09/2010"}
 		};
+		
+		Object[][] aa = tControl._getTasksList();
+
 		table = new JTable(data, columnNames);
 		table.setRowHeight(30);
 		table.setAlignmentX(10);
@@ -297,6 +299,8 @@ public class TasksView {
 		scrollPane = new JScrollPane(table);
 		table.setPreferredScrollableViewportSize(new Dimension(270, 365));
 		table.setFillsViewportHeight(true);
+		
+		
 		return scrollPane;
 
 	}
@@ -403,6 +407,7 @@ public class TasksView {
 	}
 
 	public void goToTasks() {
+		cards.add(getTasksPanel(),"TasksList");
 		CardLayout cl = (CardLayout)(cards.getLayout());
 	    cl.show(cards, "TasksList");
 	}

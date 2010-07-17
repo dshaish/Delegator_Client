@@ -13,44 +13,49 @@ import container.SpringContextContainer;
 public class TaskModel {
 	private NubemetWebService client;
 	private String username;
+	private Long tid;
 	private boolean loggedIn=false;
 	
 	public TaskModel(NubemetWebService client){	
 		this.client = client;
 	}
 	public boolean deleteTask(int tid){
-		if(!client.removeTask(tid)){
-			System.out.println("Task Deleted");
-			return true;
-		}
-		else{
-			System.err.println("Error Deleting Task");
-			return false;
-		}
+//		if(!client.removeTask(tid)){
+//			System.out.println("Task Deleted");
+//			return true;
+//		}
+//		else{
+//			System.err.println("Error Deleting Task");
+//			return false;
+//		}
+		return false;
 	}
 	public boolean addTask(NubemetTask task){
-		if(client.addTask(task)){
-			System.out.println("Task Added succesfully");
-			return true;
-		}
-		System.err.println("Error Deleting Task");
+//		if(client.addTask(task)){
+//			System.out.println("Task Added succesfully");
+//			return true;
+//		}
+//		System.err.println("Error Deleting Task");
 		return false;	
 	}
 	public boolean login(String username, String password){
 		
-		this.username = username;
-		loggedIn = true;
-		return true;
-//		if(!loggedIn){
-//			if(client.authenticate(username, password)){
-//				this.username = username;
-//				loggedIn = true;
-//			}
-//			else
-//				loggedIn = false;
-//		}
-//		
-//		return loggedIn;
+		//this.username = username;
+		//loggedIn = true;
+		//return true;
+		
+		if(!loggedIn){
+			Long tid = client.authenticate(username, password);
+			if(tid>=0){
+				this.username = username;
+				this.tid = tid;
+				loggedIn = true;
+			}
+			else
+				loggedIn = false;
+		}
+		
+		return loggedIn;
 	}
 
 	public void logout() {
@@ -59,7 +64,7 @@ public class TaskModel {
 	}
 	
 	public Object[][] getTasksList(){
-		List<NubemetTask> tasks = client.getTasks(UserTasksFilter.ALL);
+		List<NubemetTask> tasks = client.getTasks(tid);
 		
 		Object[][] data = new String[tasks.size()][3];
 		
