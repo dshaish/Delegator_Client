@@ -13,7 +13,7 @@ import container.SpringContextContainer;
 public class TaskModel {
 	private NubemetWebService client;
 	private String username;
-	private Long tid;
+	private Long eid;
 	private boolean loggedIn=false;
 	
 	public TaskModel(NubemetWebService client){	
@@ -45,10 +45,10 @@ public class TaskModel {
 		//return true;
 		
 		if(!loggedIn){
-			Long tid = client.authenticate(username, password);
-			if(tid>=0){
+			Long eid = client.authenticate(username, password);
+			if(eid>=0){
 				this.username = username;
-				this.tid = tid;
+				this.eid = eid;
 				loggedIn = true;
 			}
 			else
@@ -64,14 +64,18 @@ public class TaskModel {
 	}
 	
 	public Object[][] getTasksList(){
-		List<NubemetTask> tasks = client.getTasks(tid);
+		List<NubemetTask> tasks = client.getTasks(eid);
 		
 		Object[][] data = new String[tasks.size()][3];
 		
 		for(int i=0;i<tasks.size();i++){
-			data[i][0] = i;
+			data[i][0] = String.valueOf(i);
 			data[i][1] = tasks.get(i).getTitle();
-			data[i][2] = tasks.get(i).getEdate().toString();
+			if (tasks.get(i).getEdate()!= null){
+				data[i][2] = tasks.get(i).getEdate().toString();
+			}else {
+				data[i][2] = "NONE";
+			}
 		}
 		
 		return data;

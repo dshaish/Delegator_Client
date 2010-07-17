@@ -267,15 +267,7 @@ public class TasksView {
 		String[] columnNames = {"","",
 		""};
 		
-		Object[][] data = {
-				{1,"First Day at work", "01/08/2010"},
-				{2,"Submission of the project", "15/08/2010"},
-				{3,"task bla bla bla", "21/08/2010"},
-				{4,"First day at school", "01/09/2010"},
-				{5,"saddsf sdlkfh aksd ", "02/09/2010"}
-		};
-		
-		Object[][] aa = tControl._getTasksList();
+		Object[][] data = tControl._getTasksList();
 
 		table = new JTable(data, columnNames);
 		table.setRowHeight(30);
@@ -434,7 +426,6 @@ public class TasksView {
 
 	public NubemetTask getNewNubemetTask() {
 		NubemetTask task = new NubemetTask();
-		
 		return task;
 	}
 
