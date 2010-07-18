@@ -10,6 +10,7 @@ import java.util.List;
 import javax.swing.JCheckBox;
 
 import org.delegator.wsclient.Employee;
+import org.delegator.wsclient.NubemetEmployee;
 
 import model.TaskModel;
 
@@ -113,7 +114,7 @@ public class TasksController {
 	public Object[][] _getTasksList() {
 		return _model.getTasksList();
 	}
-	public List<Employee> getWorksForNames(){
+	public List<NubemetEmployee> getWorksForNames(){
 		return _model.getWorksForNames();
 		
 	}

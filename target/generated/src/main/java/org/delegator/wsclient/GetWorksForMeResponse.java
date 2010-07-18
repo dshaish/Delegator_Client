@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://api.delegator.org/}employee" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://api.delegator.org/}nubemetEmployee" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GetWorksForMeResponse {
 
     @XmlElement(name = "return")
-    protected List<Employee> _return;
+    protected List<NubemetEmployee> _return;
 
     /**
      * Gets the value of the return property.
@@ -55,13 +55,13 @@ public class GetWorksForMeResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Employee }
+     * {@link NubemetEmployee }
      * 
      * 
      */
-    public List<Employee> getReturn() {
+    public List<NubemetEmployee> getReturn() {
         if (_return == null) {
-            _return = new ArrayList<Employee>();
+            _return = new ArrayList<NubemetEmployee>();
         }
         return this._return;
     }

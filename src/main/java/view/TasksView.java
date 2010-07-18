@@ -35,6 +35,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerNumberModel;
 
 import org.delegator.wsclient.Employee;
+import org.delegator.wsclient.NubemetEmployee;
 import org.delegator.wsclient.NubemetTask;
 
 import com.sun.awt.AWTUtilities;
@@ -229,9 +230,9 @@ public class TasksView {
 
 	private List<String> getListOfDesc() {
 		List<String> l = new ArrayList<String>();
-		List<Employee> worksFor = tControl.getWorksForNames();
-		for (Employee emp : worksFor){
-			l.add(emp.getUserName());
+		List<NubemetEmployee> worksFor = tControl.getWorksForNames();
+		for (NubemetEmployee emp : worksFor){
+			l.add(emp.getName());
 		}
 		return l;
 	}

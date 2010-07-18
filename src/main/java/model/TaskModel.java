@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import org.delegator.wsclient.Employee;
+import org.delegator.wsclient.NubemetEmployee;
 import org.delegator.wsclient.NubemetTask;
 import org.delegator.wsclient.NubemetWebService;
 import org.delegator.wsclient.UserTasksFilter;
@@ -77,7 +78,7 @@ public class TaskModel {
 		}
 		return data;
 	}
-	public List<Employee> getWorksForNames() {
+	public List<NubemetEmployee> getWorksForNames() {
 		return client.getWorksForMe(new Long(1));
 	}
 	
