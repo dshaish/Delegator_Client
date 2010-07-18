@@ -21,25 +21,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="attachment" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="cdate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="creator" type="{http://api.delegator.org/}employee" minOccurs="0"/>
  *         &lt;element name="delegated" type="{http://www.w3.org/2001/XMLSchema}byte"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="doneBies" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="doneBies_1" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="edate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="employee" type="{http://api.delegator.org/}employee" minOccurs="0"/>
- *         &lt;element name="finishedDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="flagged" type="{http://www.w3.org/2001/XMLSchema}byte"/>
- *         &lt;element name="status" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="tasksCByTid" type="{http://api.delegator.org/}tasksC" minOccurs="0"/>
- *         &lt;element name="tasksCsForParentTaskId" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="tasksCsForParentTaskId_1" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="tasksCsForRootTaskId" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="tasksCsForRootTaskId_1" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
- *         &lt;element name="tid" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="doneBy" type="{http://api.delegator.org/}doneBy" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="tid" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="updates" type="{http://api.delegator.org/}updates" minOccurs="0"/>
+ *         &lt;element name="cDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="eDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -50,103 +39,51 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tasks", propOrder = {
-    "attachment",
-    "cdate",
+    "creator",
     "delegated",
     "description",
-    "doneBies",
-    "doneBies1",
-    "edate",
-    "employee",
-    "finishedDate",
-    "flagged",
-    "status",
-    "tasksCByTid",
-    "tasksCsForParentTaskId",
-    "tasksCsForParentTaskId1",
-    "tasksCsForRootTaskId",
-    "tasksCsForRootTaskId1",
+    "doneBy",
     "tid",
     "title",
-    "updates"
+    "cDate",
+    "eDate"
 })
 public class Tasks {
 
-    protected String attachment;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar cdate;
+    protected Employee creator;
     protected byte delegated;
     protected String description;
     @XmlElement(nillable = true)
-    protected List<Object> doneBies;
-    @XmlElement(name = "doneBies_1", nillable = true)
-    protected List<Object> doneBies1;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar edate;
-    protected Employee employee;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar finishedDate;
-    protected byte flagged;
-    protected String status;
-    protected TasksC tasksCByTid;
-    @XmlElement(nillable = true)
-    protected List<Object> tasksCsForParentTaskId;
-    @XmlElement(name = "tasksCsForParentTaskId_1", nillable = true)
-    protected List<Object> tasksCsForParentTaskId1;
-    @XmlElement(nillable = true)
-    protected List<Object> tasksCsForRootTaskId;
-    @XmlElement(name = "tasksCsForRootTaskId_1", nillable = true)
-    protected List<Object> tasksCsForRootTaskId1;
-    protected Integer tid;
+    protected List<DoneBy> doneBy;
+    protected Long tid;
     protected String title;
-    protected Updates updates;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar cDate;
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar eDate;
 
     /**
-     * Gets the value of the attachment property.
+     * Gets the value of the creator property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Employee }
      *     
      */
-    public String getAttachment() {
-        return attachment;
+    public Employee getCreator() {
+        return creator;
     }
 
     /**
-     * Sets the value of the attachment property.
+     * Sets the value of the creator property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Employee }
      *     
      */
-    public void setAttachment(String value) {
-        this.attachment = value;
-    }
-
-    /**
-     * Gets the value of the cdate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getCdate() {
-        return cdate;
-    }
-
-    /**
-     * Sets the value of the cdate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setCdate(XMLGregorianCalendar value) {
-        this.cdate = value;
+    public void setCreator(Employee value) {
+        this.creator = value;
     }
 
     /**
@@ -190,313 +127,32 @@ public class Tasks {
     }
 
     /**
-     * Gets the value of the doneBies property.
+     * Gets the value of the doneBy property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the doneBies property.
+     * This is why there is not a <CODE>set</CODE> method for the doneBy property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getDoneBies().add(newItem);
+     *    getDoneBy().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Object }
+     * {@link DoneBy }
      * 
      * 
      */
-    public List<Object> getDoneBies() {
-        if (doneBies == null) {
-            doneBies = new ArrayList<Object>();
+    public List<DoneBy> getDoneBy() {
+        if (doneBy == null) {
+            doneBy = new ArrayList<DoneBy>();
         }
-        return this.doneBies;
-    }
-
-    /**
-     * Gets the value of the doneBies1 property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the doneBies1 property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDoneBies1().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Object }
-     * 
-     * 
-     */
-    public List<Object> getDoneBies1() {
-        if (doneBies1 == null) {
-            doneBies1 = new ArrayList<Object>();
-        }
-        return this.doneBies1;
-    }
-
-    /**
-     * Gets the value of the edate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getEdate() {
-        return edate;
-    }
-
-    /**
-     * Sets the value of the edate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setEdate(XMLGregorianCalendar value) {
-        this.edate = value;
-    }
-
-    /**
-     * Gets the value of the employee property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Employee }
-     *     
-     */
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    /**
-     * Sets the value of the employee property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Employee }
-     *     
-     */
-    public void setEmployee(Employee value) {
-        this.employee = value;
-    }
-
-    /**
-     * Gets the value of the finishedDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getFinishedDate() {
-        return finishedDate;
-    }
-
-    /**
-     * Sets the value of the finishedDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setFinishedDate(XMLGregorianCalendar value) {
-        this.finishedDate = value;
-    }
-
-    /**
-     * Gets the value of the flagged property.
-     * 
-     */
-    public byte getFlagged() {
-        return flagged;
-    }
-
-    /**
-     * Sets the value of the flagged property.
-     * 
-     */
-    public void setFlagged(byte value) {
-        this.flagged = value;
-    }
-
-    /**
-     * Gets the value of the status property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatus() {
-        return status;
-    }
-
-    /**
-     * Sets the value of the status property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatus(String value) {
-        this.status = value;
-    }
-
-    /**
-     * Gets the value of the tasksCByTid property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TasksC }
-     *     
-     */
-    public TasksC getTasksCByTid() {
-        return tasksCByTid;
-    }
-
-    /**
-     * Sets the value of the tasksCByTid property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TasksC }
-     *     
-     */
-    public void setTasksCByTid(TasksC value) {
-        this.tasksCByTid = value;
-    }
-
-    /**
-     * Gets the value of the tasksCsForParentTaskId property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the tasksCsForParentTaskId property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTasksCsForParentTaskId().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Object }
-     * 
-     * 
-     */
-    public List<Object> getTasksCsForParentTaskId() {
-        if (tasksCsForParentTaskId == null) {
-            tasksCsForParentTaskId = new ArrayList<Object>();
-        }
-        return this.tasksCsForParentTaskId;
-    }
-
-    /**
-     * Gets the value of the tasksCsForParentTaskId1 property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the tasksCsForParentTaskId1 property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTasksCsForParentTaskId1().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Object }
-     * 
-     * 
-     */
-    public List<Object> getTasksCsForParentTaskId1() {
-        if (tasksCsForParentTaskId1 == null) {
-            tasksCsForParentTaskId1 = new ArrayList<Object>();
-        }
-        return this.tasksCsForParentTaskId1;
-    }
-
-    /**
-     * Gets the value of the tasksCsForRootTaskId property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the tasksCsForRootTaskId property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTasksCsForRootTaskId().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Object }
-     * 
-     * 
-     */
-    public List<Object> getTasksCsForRootTaskId() {
-        if (tasksCsForRootTaskId == null) {
-            tasksCsForRootTaskId = new ArrayList<Object>();
-        }
-        return this.tasksCsForRootTaskId;
-    }
-
-    /**
-     * Gets the value of the tasksCsForRootTaskId1 property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the tasksCsForRootTaskId1 property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getTasksCsForRootTaskId1().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Object }
-     * 
-     * 
-     */
-    public List<Object> getTasksCsForRootTaskId1() {
-        if (tasksCsForRootTaskId1 == null) {
-            tasksCsForRootTaskId1 = new ArrayList<Object>();
-        }
-        return this.tasksCsForRootTaskId1;
+        return this.doneBy;
     }
 
     /**
@@ -504,10 +160,10 @@ public class Tasks {
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link Long }
      *     
      */
-    public Integer getTid() {
+    public Long getTid() {
         return tid;
     }
 
@@ -516,10 +172,10 @@ public class Tasks {
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link Long }
      *     
      */
-    public void setTid(Integer value) {
+    public void setTid(Long value) {
         this.tid = value;
     }
 
@@ -548,27 +204,51 @@ public class Tasks {
     }
 
     /**
-     * Gets the value of the updates property.
+     * Gets the value of the cDate property.
      * 
      * @return
      *     possible object is
-     *     {@link Updates }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public Updates getUpdates() {
-        return updates;
+    public XMLGregorianCalendar getCDate() {
+        return cDate;
     }
 
     /**
-     * Sets the value of the updates property.
+     * Sets the value of the cDate property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Updates }
+     *     {@link XMLGregorianCalendar }
      *     
      */
-    public void setUpdates(Updates value) {
-        this.updates = value;
+    public void setCDate(XMLGregorianCalendar value) {
+        this.cDate = value;
+    }
+
+    /**
+     * Gets the value of the eDate property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getEDate() {
+        return eDate;
+    }
+
+    /**
+     * Sets the value of the eDate property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setEDate(XMLGregorianCalendar value) {
+        this.eDate = value;
     }
 
 }

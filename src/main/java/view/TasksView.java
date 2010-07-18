@@ -34,6 +34,7 @@ import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerNumberModel;
 
+import org.delegator.wsclient.Employee;
 import org.delegator.wsclient.NubemetTask;
 
 import com.sun.awt.AWTUtilities;
@@ -226,14 +227,12 @@ public class TasksView {
 		//panel.add(scrollPane);
 	}
 
-	private List getListOfDesc() {
+	private List<String> getListOfDesc() {
 		List<String> l = new ArrayList<String>();
-		//List<String> l = tControl.getWorksForNames();
-		l.add("Shimon Mizrahi");
-		l.add("Barak Obama");
-		l.add("Puyol");
-		l.add("Ehud Barak");
-		
+		List<Employee> worksFor = tControl.getWorksForNames();
+		for (Employee emp : worksFor){
+			l.add(emp.getUserName());
+		}
 		return l;
 	}
 

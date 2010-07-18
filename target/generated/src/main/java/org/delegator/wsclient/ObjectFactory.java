@@ -45,6 +45,46 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Authenticate }
+     * 
+     */
+    public Authenticate createAuthenticate() {
+        return new Authenticate();
+    }
+
+    /**
+     * Create an instance of {@link Employee }
+     * 
+     */
+    public Employee createEmployee() {
+        return new Employee();
+    }
+
+    /**
+     * Create an instance of {@link AddTaskResponse }
+     * 
+     */
+    public AddTaskResponse createAddTaskResponse() {
+        return new AddTaskResponse();
+    }
+
+    /**
+     * Create an instance of {@link Tasks }
+     * 
+     */
+    public Tasks createTasks() {
+        return new Tasks();
+    }
+
+    /**
+     * Create an instance of {@link GetWorksForMe }
+     * 
+     */
+    public GetWorksForMe createGetWorksForMe() {
+        return new GetWorksForMe();
+    }
+
+    /**
      * Create an instance of {@link GetTasks }
      * 
      */
@@ -61,11 +101,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link HashMap }
+     * Create an instance of {@link AddTask }
      * 
      */
-    public HashMap createHashMap() {
-        return new HashMap();
+    public AddTask createAddTask() {
+        return new AddTask();
+    }
+
+    /**
+     * Create an instance of {@link DoneBy }
+     * 
+     */
+    public DoneBy createDoneBy() {
+        return new DoneBy();
+    }
+
+    /**
+     * Create an instance of {@link DelegateTaskResponse }
+     * 
+     */
+    public DelegateTaskResponse createDelegateTaskResponse() {
+        return new DelegateTaskResponse();
     }
 
     /**
@@ -85,11 +141,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddTask }
+     * Create an instance of {@link RemoveTask }
      * 
      */
-    public AddTask createAddTask() {
-        return new AddTask();
+    public RemoveTask createRemoveTask() {
+        return new RemoveTask();
     }
 
     /**
@@ -101,30 +157,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetWorksForMe }
-     * 
-     */
-    public GetWorksForMe createGetWorksForMe() {
-        return new GetWorksForMe();
-    }
-
-    /**
-     * Create an instance of {@link DelegateTaskResponse }
-     * 
-     */
-    public DelegateTaskResponse createDelegateTaskResponse() {
-        return new DelegateTaskResponse();
-    }
-
-    /**
-     * Create an instance of {@link NubemetTask }
-     * 
-     */
-    public NubemetTask createNubemetTask() {
-        return new NubemetTask();
-    }
-
-    /**
      * Create an instance of {@link AuthenticateResponse }
      * 
      */
@@ -133,27 +165,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link AddTaskResponse }
+     * Create an instance of {@link NubemetTask }
      * 
      */
-    public AddTaskResponse createAddTaskResponse() {
-        return new AddTaskResponse();
-    }
-
-    /**
-     * Create an instance of {@link Authenticate }
-     * 
-     */
-    public Authenticate createAuthenticate() {
-        return new Authenticate();
-    }
-
-    /**
-     * Create an instance of {@link RemoveTask }
-     * 
-     */
-    public RemoveTask createRemoveTask() {
-        return new RemoveTask();
+    public NubemetTask createNubemetTask() {
+        return new NubemetTask();
     }
 
     /**

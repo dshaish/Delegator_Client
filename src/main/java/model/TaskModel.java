@@ -78,7 +78,7 @@ public class TaskModel {
 		return data;
 	}
 	public List<Employee> getWorksForNames() {
-		return client.getWorksForMe(eid);
+		return client.getWorksForMe(new Long(1));
 	}
 	
 	//public String[][] getWorksForMe(){
