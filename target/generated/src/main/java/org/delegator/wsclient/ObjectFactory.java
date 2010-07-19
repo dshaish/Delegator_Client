@@ -45,62 +45,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Authenticate }
-     * 
-     */
-    public Authenticate createAuthenticate() {
-        return new Authenticate();
-    }
-
-    /**
-     * Create an instance of {@link Employee }
-     * 
-     */
-    public Employee createEmployee() {
-        return new Employee();
-    }
-
-    /**
-     * Create an instance of {@link AddTaskResponse }
-     * 
-     */
-    public AddTaskResponse createAddTaskResponse() {
-        return new AddTaskResponse();
-    }
-
-    /**
-     * Create an instance of {@link Tasks }
-     * 
-     */
-    public Tasks createTasks() {
-        return new Tasks();
-    }
-
-    /**
-     * Create an instance of {@link GetWorksForMe }
-     * 
-     */
-    public GetWorksForMe createGetWorksForMe() {
-        return new GetWorksForMe();
-    }
-
-    /**
-     * Create an instance of {@link GetTasks }
-     * 
-     */
-    public GetTasks createGetTasks() {
-        return new GetTasks();
-    }
-
-    /**
-     * Create an instance of {@link RemoveTaskResponse }
-     * 
-     */
-    public RemoveTaskResponse createRemoveTaskResponse() {
-        return new RemoveTaskResponse();
-    }
-
-    /**
      * Create an instance of {@link AddTask }
      * 
      */
@@ -109,27 +53,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DoneBy }
+     * Create an instance of {@link NubemetEmployee }
      * 
      */
-    public DoneBy createDoneBy() {
-        return new DoneBy();
+    public NubemetEmployee createNubemetEmployee() {
+        return new NubemetEmployee();
     }
 
     /**
-     * Create an instance of {@link DelegateTaskResponse }
+     * Create an instance of {@link NubemetTask }
      * 
      */
-    public DelegateTaskResponse createDelegateTaskResponse() {
-        return new DelegateTaskResponse();
-    }
-
-    /**
-     * Create an instance of {@link GetTasksResponse }
-     * 
-     */
-    public GetTasksResponse createGetTasksResponse() {
-        return new GetTasksResponse();
+    public NubemetTask createNubemetTask() {
+        return new NubemetTask();
     }
 
     /**
@@ -141,19 +77,35 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetWorksForMe }
+     * 
+     */
+    public GetWorksForMe createGetWorksForMe() {
+        return new GetWorksForMe();
+    }
+
+    /**
+     * Create an instance of {@link GetTasksResponse }
+     * 
+     */
+    public GetTasksResponse createGetTasksResponse() {
+        return new GetTasksResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetTasks }
+     * 
+     */
+    public GetTasks createGetTasks() {
+        return new GetTasks();
+    }
+
+    /**
      * Create an instance of {@link RemoveTask }
      * 
      */
     public RemoveTask createRemoveTask() {
         return new RemoveTask();
-    }
-
-    /**
-     * Create an instance of {@link GetWorksForMeResponse }
-     * 
-     */
-    public GetWorksForMeResponse createGetWorksForMeResponse() {
-        return new GetWorksForMeResponse();
     }
 
     /**
@@ -165,11 +117,43 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link NubemetTask }
+     * Create an instance of {@link GetWorksForMeResponse }
      * 
      */
-    public NubemetTask createNubemetTask() {
-        return new NubemetTask();
+    public GetWorksForMeResponse createGetWorksForMeResponse() {
+        return new GetWorksForMeResponse();
+    }
+
+    /**
+     * Create an instance of {@link DelegateTaskResponse }
+     * 
+     */
+    public DelegateTaskResponse createDelegateTaskResponse() {
+        return new DelegateTaskResponse();
+    }
+
+    /**
+     * Create an instance of {@link AddTaskResponse }
+     * 
+     */
+    public AddTaskResponse createAddTaskResponse() {
+        return new AddTaskResponse();
+    }
+
+    /**
+     * Create an instance of {@link Authenticate }
+     * 
+     */
+    public Authenticate createAuthenticate() {
+        return new Authenticate();
+    }
+
+    /**
+     * Create an instance of {@link RemoveTaskResponse }
+     * 
+     */
+    public RemoveTaskResponse createRemoveTaskResponse() {
+        return new RemoveTaskResponse();
     }
 
     /**

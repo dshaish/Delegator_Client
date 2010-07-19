@@ -77,6 +77,7 @@ public class TasksView {
 	private JTextField title;
 	private JTextArea description;
 	private JFormattedTextField dueDate;
+	List<NubemetEmployee> worksFor;
 	
 	public TasksView(TasksController controller){
 		tControl = controller;
@@ -230,7 +231,7 @@ public class TasksView {
 
 	private List<String> getListOfDesc() {
 		List<String> l = new ArrayList<String>();
-		List<NubemetEmployee> worksFor = tControl.getWorksForNames();
+		worksFor = tControl.getWorksForNames();
 		for (NubemetEmployee emp : worksFor){
 			l.add(emp.getName());
 		}
@@ -273,10 +274,10 @@ public class TasksView {
 		table = new JTable(data, columnNames);
 		table.setRowHeight(30);
 		table.setAlignmentX(10);
-		table.setBackground(Color.ORANGE);
-		table.setGridColor(Color.ORANGE);
-		table.setSelectionForeground(Color.BLACK);
-		table.setSelectionBackground(Color.ORANGE);
+		table.setBackground(Color.LIGHT_GRAY);
+		table.setGridColor(Color.BLACK);
+		//table.setSelectionForeground(Color.);
+		//table.setSelectionBackground(Color.DARK_GRAY);
 		TableColumn column = null;
 		for (int i = 0; i < 3; i++) {
 			column = table.getColumnModel().getColumn(i);
@@ -427,10 +428,15 @@ public class TasksView {
 
 	public NubemetTask getNewNubemetTask() {
 		NubemetTask task = new NubemetTask();
-		task.setTitle(" Title ");
-		task.setDescription("A TASK");
+		task.setTitle(title.getText());
+		task.setDescription(description.getText());
+		String doneB = "";
+		for (int i=0 ; i < worksFor.size() ; i++){
+			if (descendants.get(i).isSelected()){
+				 doneB += String.valueOf(worksFor.get(i).getEid())+ " ";
+			}
+		}
+		task.setDoneBy(doneB);
 		return task;
 	}
-
-
 }

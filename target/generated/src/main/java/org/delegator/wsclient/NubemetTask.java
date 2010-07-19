@@ -1,11 +1,8 @@
 
 package org.delegator.wsclient;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -24,7 +21,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="cdate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="delegated" type="{http://www.w3.org/2001/XMLSchema}byte"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="doneBy" type="{http://www.w3.org/2001/XMLSchema}int" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="doneBy" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="edate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="tid" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -52,8 +49,7 @@ public class NubemetTask {
     protected XMLGregorianCalendar cdate;
     protected byte delegated;
     protected String description;
-    @XmlElement(nillable = true)
-    protected List<Integer> doneBy;
+    protected String doneBy;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar edate;
     protected Long tid;
@@ -126,30 +122,25 @@ public class NubemetTask {
     /**
      * Gets the value of the doneBy property.
      * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the doneBy property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getDoneBy().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Integer }
-     * 
-     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public List<Integer> getDoneBy() {
-        if (doneBy == null) {
-            doneBy = new ArrayList<Integer>();
-        }
-        return this.doneBy;
+    public String getDoneBy() {
+        return doneBy;
+    }
+
+    /**
+     * Sets the value of the doneBy property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setDoneBy(String value) {
+        this.doneBy = value;
     }
 
     /**
